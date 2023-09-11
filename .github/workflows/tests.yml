@@ -1,4 +1,4 @@
-name: Build Tests
+name: Unit tests
 
 on:
   push:
@@ -21,13 +21,12 @@ jobs:
           submodules: recursive
       
       - name: Configure
-        working-directory: test
         run: cmake -B build .
       
-      - name: Build Tests
-        working-directory: test/build
+      - name: Build
+        working-directory: build
         run: make
       
       - name: Run Tests
-        working-directory: test/build
+        working-directory: build
         run: make test
